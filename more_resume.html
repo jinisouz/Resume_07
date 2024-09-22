@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <script>
+        function validate() {
+            var isValid = true;
+            var user_name = document.getElementById("txt_name");
+            const user_email = document.getElementById("txt_email");
+            const user_phone = document.getElementById("txt_phone");
+
+            if (user_name.value.trim() === "" || user_name.value.trim().length < 8) {
+                alert("Username must have a minimum of 8 characters");
+                isValid = false;
+            }
+
+            const emailPattern = /^[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$/i;
+            if (!emailPattern.test(user_email.value)) {
+                alert("Please enter a valid email address");
+                isValid = false;
+            }
+
+            const phonePattern = /^[0-9]{10}$/; // Adjust for your phone number format
+            if (!phonePattern.test(user_phone.value)) {
+                alert("Please enter a valid phone number (10 digits)");
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Show success message
+                alert("Thank you! Your form has been submitted successfully.");
+            }
+
+            // Prevent form from submitting to keep the message on the screen
+            return isValid; 
+            
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:lightblue;
+        }
+
+        .container {
+            width: 70%;
+            height: 80%;
+            background-image: url('https://i.pinimg.com/736x/cb/69/4a/cb694a6d551562b07e883cb7097c93e8.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid brown;
+            border-radius: 10px;
+        }
+        .container::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.7); /* White opaque layer */
+            z-index: 0; /* Behind the form */
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 400px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            border: 4px solid white;
+            background-color: rgba(135, 206, 250, 0.9); /* Semi-transparent background */
+            z-index: 1; /* Ensure form is above the opaque layer */
+        }
+
+        i {
+            color: blue;
+        }
+
+        form div input {
+            width: 100%; /* Adjust width to 100% */
+            height: 40px;
+            border-radius: 8px;
+            outline: none;
+            border: 2px solid #c4c4c4;
+            padding: 0 10px; /* Adjust padding */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .failure-icon {
+            color: red;
+        }
+
+        .success-icon {
+            color: green;
+        }
+
+        .failure-icon,
+        .success-icon {
+            display: none;
+        }
+
+        h2, label, p {
+            color: brown;
+        }
+    </style>
+
+    <title>REGEX</title>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="return validate()" method="post" action="submit.php">
+            <p><b>Given below is a sign in form if you want to register for online Mandala class.</b></p>
+            <h2><center><u>SIGN IN</u></center></h2>
+            <div>
+                <label for="txt_name"> Name <i class="fa-solid fa-user"></i></label>
+                <input type="text" id="txt_name" name="txt_name">
+                <i class="fas fa-exclamation-circle failure-icon"></i>
+                <i class="far fa-check-circle success-icon"></i>
+            </div><br>
+            <div>
+                <label for="txt_email">Email ID <i class="fa-solid fa-envelope"></i></label>
+                <input type="email" id="txt_email" name="txt_email">
+                <i class="fas fa-exclamation-circle failure-icon"></i>
+                <i class="far fa-check-circle success-icon"></i>
+            </div><br>
+            <div>
+                <label for="txt_phone"> Phone Number <i class="fa-solid fa-phone"></i></label>
+                <input type="text" id="txt_phone" name="txt_phone">
+                <i class="fas fa-exclamation-circle failure-icon"></i>
+                <i class="far fa-check-circle success-icon"></i>
+            </div><br>
+            &nbsp;
+            <input type="submit" value="Sign In"><br>
+        </form>
+    </div>
+</body>
+</html>

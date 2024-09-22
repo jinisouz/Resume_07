@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capital Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightblue;
+        }
+
+        #quiz {
+            background: #ffffff;
+            padding: 20px;
+            border: 3px solid brown;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+            height: 400px;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: brown;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Country Capital Quiz</h1>
+        <div id="quiz">
+            <h3 id="question"></h3>
+            <div id="options"></div>
+            <button onclick="nextQuestion()">Next Question</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            { country: "France", capital: "Paris" },
+            { country: "Germany", capital: "Berlin" },
+            { country: "Italy", capital: "Rome" },
+            { country: "Spain", capital: "Madrid" },
+            { country: "Japan", capital: "Tokyo" },
+            { country: "India", capital: "New Delhi" },
+            { country: "Brazil", capital: "Brasília" },
+            { country: "Canada", capital: "Ottawa" },
+            { country: "Russia", capital: "Moscow" },
+            { country: "Australia", capital: "Canberra" },
+        ];
+
+        function getRandomOptions(correctAnswer) {
+            const options = new Set();
+            options.add(correctAnswer);
+            while (options.size < 4) {
+                const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+                options.add(randomQuestion.capital);
+            }
+            return Array.from(options).sort(() => Math.random() - 0.5);
+        }
+
+        let currentQuestionIndex = 0;
+        let currentQuestion;
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                document.getElementById("result").innerText = "Quiz Completed!";
+                document.getElementById("quiz").style.display = "none";
+                return;
+            }
+
+            currentQuestion = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = `What is the capital of ${currentQuestion.country}?`;
+            const options = getRandomOptions(currentQuestion.capital);
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = '';
+
+            options.forEach(option => {
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.onclick = () => checkAnswer(option);
+                optionsDiv.appendChild(button);
+            });
+        }
+
+        function checkAnswer(answer) {
+            const result = document.getElementById("result");
+            if (answer === currentQuestion.capital) {
+                result.textContent = "Correct!";
+            } else {
+                result.textContent = `Wrong! The correct answer is ${currentQuestion.capital}.`;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+            document.getElementById("result").innerText = ''; // Clear the previous result
+        }
+
+        // Load the first question
+        loadQuestion();
+    </script>
+</body>
+</html>

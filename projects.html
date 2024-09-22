@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0; /* Set margin to 0 */
+            background-color: lightblue;
+        }
+        .container {
+            border: 4px solid brown;
+            border-radius: 10px;
+            padding: 40px;
+            width: 70%;
+            height: 70%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .box {
+            border: 2px solid brown;
+            border-radius: 10px;
+            padding: 30px;
+            width: 25%; /* Adjust width as needed */
+            background-color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Border shadow on hover */
+            transform: translateY(-5px); /* Slight lift effect on hover */
+        }
+        img {
+            width: 100%;
+            height: 300px; /* Set a fixed height for all images */
+            object-fit: cover; /* Maintain aspect ratio while covering the entire height */
+        }
+        a {
+            border: solid;
+            border-radius: 5px;
+            padding: 5px;
+            justify-self: center;
+            display: flex;
+            text-align: center;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:brown">PROJECTS</h1>
+    
+
+    <div class="container">
+        <div class="box" id="pj_1">
+            <h2 align="center" style="color:brown">Project 1</h2>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6dST6YPEZIs8EhJDm_DFYFBvjgrK8BuBjbg&s" alt="image of globe">
+            </div>
+            &nbsp;
+            <div>
+                <a href="project1_resume.html" target="_blank">COUNTRY QUIZ</a>
+            </div>
+        </div>
+        <div class="box">
+            <h2 align="center" style="color:brown">Project 2</h2>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhxtzOccTgIto-iillIq-aEw6OkM8PuTmVZA&s" alt="image of globe">
+            </div>
+            &nbsp;
+            <div>
+                <a href="project2_resume.html" target="_blank">BMI CALCULATOR</a>
+            </div>
+        </div>
+        <div class="box">
+            <h2 align="center" style="color:brown">Project 3</h2>
+            <div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUb3Pzywd9IWvgw5NmGt-wjfZKKQznwO9Qvw&s" alt="image of globe">
+            </div>
+            &nbsp;
+            <div>
+                <a href="project3_resume.html" target="_blank">TEMPERATURE CONVERTOR </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
